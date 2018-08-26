@@ -14,6 +14,15 @@ class Myface:
 
         self.jibie = 255 / len(self.gread)
 
+    def get_char_from_pixel(self, r, g, b, alpha=256):
+        if alpha == 0:
+            return ' '
+        length = len(self.ascii_char)
+        gray = int(0.2126 * r + 0.7152 * g + 0.0722 * b)
+
+        unit = (256.0 + 1) / length
+        return self.ascii_char[int(gray / unit)]
+
     def cls(self):
         os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -21,26 +30,27 @@ class Myface:
         str = ''
         image = imgData
 
-        for i, ivalue in enumerate(imgData):
-            for j, jvalue in enumerate(ivalue):
-                # 把每个像素点转换为字符串
-                str += self.ascii_char[int(jvalue % len(self.ascii_char))]
-            str+='\n'
-        print(str)
+        # for i, ivalue in enumerate(imgData):
+        #     for j, jvalue in enumerate(ivalue):
+        #         # 把每个像素点转换为字符串
+        #         # print(jvalue)
+        #         str += self.get_char_from_pixel(jvalue[0], jvalue[1], jvalue[2])
+        #     str+='\n'
+        # print(str)
 
-        # for letter in image:  # 第一个实例
-        #     for garr in letter:
-        #         r = garr[0]
-        #         g = garr[1]
-        #         b = garr[2]
-        #
-        #
-        #         grr = r * 0.299 + g * 0.587 + b * 0.114
-        #         if grr >= 150:
-        #             str += '.'
-        #         else:
-        #             str += self.gread[min(int(round(grr / self.jibie)), len(self.gread) - 1)]
-        #     str += '\n'
+        for letter in image:  # 第一个实例
+            for garr in letter:
+                r = garr[0]
+                g = garr[1]
+                b = garr[2]
+
+
+                grr = r * 0.299 + g * 0.587 + b * 0.114
+                if grr >= 150:
+                    str += '.'
+                else:
+                    str += self.gread[min(int(round(grr / self.jibie)), len(self.gread) - 1)]
+            str += '\n'
         print(str)
     def beforeRender(self):
         print("\n" * 10000)
@@ -53,7 +63,7 @@ class Myface:
         self.beforeRender()
         while True:
             ret, image = cap.read()
-            resize = cv2.resize(image, (int(1200 / 10), int(600 / 10)), interpolation=cv2.INTER_CUBIC)
+            resize = cv2.resize(image, (int(800 / 10), int(500 / 10)), interpolation=cv2.INTER_CUBIC)
 
             self.renderStr(resize)
         # 释放资源
@@ -69,10 +79,9 @@ class Myface:
             self.beforeRender()
             while True:
                 ret, image = cap.read()
-                resize = cv2.resize(image, (int(1440 / 10), int(1080 / 10)), interpolation=cv2.INTER_CUBIC)
-                gray = cv2.cvtColor(resize, cv2.COLOR_BGR2GRAY)
+                resize = cv2.resize(image, (int(800 / 10), int(500 / 10)), interpolation=cv2.INTER_CUBIC)
 
-                self.renderStr(gray)
+                self.renderStr(resize)
         # 释放资源
         cap.release()
         # 关闭窗口
