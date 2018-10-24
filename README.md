@@ -1,7 +1,7 @@
 # myface
 命令行里的视频  
 
-![ezgif-2-0af51b0faa46.gif](https://i.loli.net/2018/10/24/5bd090b6f3bed.gif)
+![zip.gif](https://i.loli.net/2018/10/24/5bd0914e4e4f8.gif)
 
 ## Getting Started
 
