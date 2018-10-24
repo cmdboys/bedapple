@@ -19,4 +19,5 @@
 首先更改 `showVideo.py` 里面的视频路径然后 `python showVideo.py`    
 
 ![2apnk-2120p.gif](https://i.loli.net/2018/08/26/5b8219df964d6.gif)
+![ezgif-2-0af51b0faa46.gif](https://i.loli.net/2018/10/24/5bd090b6f3bed.gif)
 
