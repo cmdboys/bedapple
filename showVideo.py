@@ -3,4 +3,4 @@
 from app import Myface
 
 myface = Myface()
-myface.showVideo('./node_module/40689-1-80.flv')
+myface.showVideo('./test.mp4')
